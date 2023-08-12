@@ -5,16 +5,17 @@ This repository includes the artifacts and instructions needed to reproduce the 
 I will also provide the python scripts needed to reproduce the graphs we have reproduced in paper [Analyzing and Mitigating Data Stalls in DNN Training](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://vldb.org/pvldb/vol14/p771-mohan.pdf). 
 
 The **GPU emulator** is embedded in the following softwares which include: 
-* **Main application** code to train images
+* **Datastall**: this is where you will run the experiments to get data. It includes: 
+  * **Main application** code to train images
+  * **GPU Profile** information file, contains the time profiling data from GPUs. 
 * Modified **PyTorch** souce code that contain emulator parts
 * Modified **TorchVision** source code that contain emulator parts
 * **mlock** module that helps assign memory
-* GPU Profile information file
 
 Follow my instructions and let me layout the steps first: 
 1.  steps of installation on CPU, include cloning the needed repositories and set them up. 
 2.  navigate into the directory to run the exepriments. 
-3. learn how to use the scripts to create the graphs. 
+3. learn how to use the scripts to reproduce the images. 
 
 Now let me take you to the first step. 
 ## Step 1: Set up on CPU-only node
@@ -136,10 +137,14 @@ Add the following text to the end of the file:
 *   hard    memlock     unlimited
 ```
 
-11. Reboot the machine
+11. Reboot the machine, which will take a while, and may require you to try to reopen/reconnect to your machine. 
 
 ```
 sudo reboot
 ```
-The steps above allows you to setup everything needed to run the experiments. Again, do not install any of the above in this repository, install them at your local. 
-## 2. Navigate into the correct directory and run the experiments. 
+The steps above allows you to setup everything needed to run the experiments. Again, do not install any of the above inside this repository, install them at your local, or the outside directory of the current directory. 
+
+## 2. Navigate into the Datastall and run the experiments
+Please head into **datastall** directory and checkout the README in there. Once you have completed the instructions on that README and know how to checkout the reproduced data, come back to this README and I will show you how to use the scripts to reproduce the graphs. 
+
+## 3. Reproduce the graphs
