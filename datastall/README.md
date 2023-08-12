@@ -24,7 +24,7 @@ Now you can execute the scripts by running:
 as an example. Now you know how to run the scripts, so I can introduce you to how to run experiments and collect data for each graph. 
 
 ## GPU Profile
-You notice that **profile.csv** contains only V100 and P100 using 64 batches. To explore more, you can replace these by the GPU profile collected in **GPU Model Profiles - p100 (Meng).csv**. 
+You notice that **profile.csv** contains only V100 and P100 using 64 batches. To explore more, you can replace these by the GPU profile collected in this [link](https://docs.google.com/spreadsheets/d/108u91potKYYNa4C_enAvwOuuOcTBwIL1ui_K8Cq1bUU/edit?usp=sharing). This file contains all the GPU profile we have collected. 
 
 # General Workflow
 
