@@ -7,10 +7,12 @@ I will also provide the python scripts needed to reproduce the graphs we have re
 The **GPU emulator** is embedded in the following softwares which include: 
 * **Datastall**: this is where you will run the experiments to get data. It includes: 
   * **Main application** code to train images
-  * **GPU Profile** information file, contains the time profiling data from GPUs. 
+  * **GPU Profile** information file, contains the time profiling data from GPUs. The raw data are [here](https://docs.google.com/spreadsheets/d/108u91potKYYNa4C_enAvwOuuOcTBwIL1ui_K8Cq1bUU/edit?usp=sharing).
 * Modified **PyTorch** souce code that contain emulator parts
 * Modified **TorchVision** source code that contain emulator parts
 * **mlock** module that helps assign memory
+* **Imagenette** dataset we used. 
+* **Vmtouch** that can show the result of memory usage. 
 
 Follow my instructions and let me layout the steps first: 
 1.  steps of installation on CPU, include cloning the needed repositories and set them up. 
@@ -21,6 +23,8 @@ Now let me take you to the first step.
 ## Step 1: Set up on CPU-only node
 Because this is a GPU Emulator, our goal is to run experiments without using GPU, and here is the instruction about setting up the environment on CPU-only machine. 
 #### Note: the commands below should be run on your reserved Chameleon node connected through ssh, not your local laptop.
+
+**Do not** install any of the above inside this repository, install them the outside directory of the current OSRE_DELIVERABLE repository. However, we kind of assumed that you are running on a virtual machine, so everything should be installed after calling "cd ~". I'm reminding you of this because if you read into the experiment scripts, some of the commands need the correct directory to be executed. 
 
 1. Chameleon image
 
@@ -43,7 +47,7 @@ Copy and paste into: https://github.com/settings/keys
 
 3. clone this repo to local
 
-DON'T COPY IT INTO THIS REPOSITORY! I have the needed applications in this repository but everything that runs here can also run in repo gpufs, so it is for the best case that you have gpufs as well. 
+DON'T COPY IT INTO THIS REPOSITORY! I have the needed applications in this repository but everything that runs here can also run in repo gpufs, so it is for the best case that you have gpufs as a backup. 
 
 ```
 git clone git@github.com:mengwanguc/gpufs.git
@@ -142,9 +146,27 @@ Add the following text to the end of the file:
 ```
 sudo reboot
 ```
+
+12. Install vmtouch:
+```
+cd ~
+git clone https://github.com/hoytech/vmtouch.git
+cd vmtouch
+make
+sudo make install
+```
+13. Download the dataset:
+```
+cd ~
+mkdir data
+cd data
+pip install gdown
+gdown https://drive.google.com/uc?id=1ywwFMZRZEdoEkvTD-Q_AGW0w-FU3-6gw
+tar -zxf imagenette2.tar.gz
+```
+Note: this is NOT the original Imagenette dataset. I produced the dataset based on Imagenette dataset by copying its files/folders again and again to reach 10G data size.
+
 The steps above allows you to setup everything needed to run the experiments. Again, do not install any of the above inside this repository, install them at your local, or the outside directory of the current directory. 
 
-## 2. Navigate into the Datastall and run the experiments
-Please head into **datastall** directory and checkout the README in there. Once you have completed the instructions on that README and know how to checkout the reproduced data, come back to this README and I will show you how to use the scripts to reproduce the graphs. 
-
-## 3. Reproduce the graphs
+## 2+3. Run Experiments in Datastall + Reproduce Figures. 
+Please head into **datastall** directory and checkout the README in there. I have decided that I will let you know how to run the experiments first. And as soon as you get the results, I will show you how to use those results as inputs to reproduce the figures. 
