@@ -2,8 +2,9 @@
 set -e
 
 gpu_type="p100"
-# "shufflenet_v2_x0_5" "resnet18" "vgg11"
-# "15"
+
+# For SSD node, use ("8g" "8g" "7g" "9g" "8g" "8g" "8g" "8g")
+# For HDD node, use ("13g" "13g" "14g" "13g" "14g" "13g" "13g" "13g")
 cache_sizes=("8g" "8g" "7g" "9g" "8g" "8g" "8g" "8g")
 models=("shufflenet_v2_x0_5" "resnet18" "squeezenet1_1" "vgg11" "alexnet" "mobilenet_v2" "resnet50" "squeezenet1_0")
 
