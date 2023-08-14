@@ -93,6 +93,29 @@ For figure 3, head to file 3_Gus_version_SSD/3_Gus_version_HDD depending on whic
 
 The above steps need you to read the google sheet carefully and click on some of the results to understand what is going on. But to explain it the easy way, all we did was to use the data time of 100% cache to minus the data time of 35% cached to get the fetch stall time. 
 
+The result for fetch stall should be somethine like this (for time3.dat):
+```
+0.1540
+0.1526
+0.0078
+0.1234
+0.1658
+0.1066
+0.0010
+-0.0039
+```
+The result for cache size is like this (for cache.dat):
+```
+shufflenet_v2_x0_5	40
+alexnet	39.4
+resnet18	37.8
+squeezenet1_0	39.7
+squeezenet1_1	32.2
+mobilenet_v2	38.7
+resnet50	32.1
+vgg11	38.8
+```
+
 Now you have the results, let me show you how to make the figures. 
 ### Reproduce Figure 3
 
@@ -103,7 +126,7 @@ python grapher.py
 To reproduce figure 3, do the following: 
 * Copy the "percentages of the fetch stall" into time3.dat inside "OSRE_DELIVERABLE/make_figures/make_graph_fig3/time3.dat". I used 8 models so there should be 8 numbers. 
 * Next, copy the "percentages of the cache size" into cache.dat inside "OSRE_DELIVERABLE/make_figures/make_graph_fig3/cache.dat". 
-* Finally, run python grapher.py, you will get a graph of figure 3 reproduced. The name of the figure is:Figure_3_SSD_p100_8w_more_models. You will need to open the grapher.py to modify the names if you are using other setups. 
+* Finally, run python grapher.py, you will get a graph of figure 3 reproduced. The name of the figure is: Figure_3_SSD_p100_8w_more_models. You will need to open the grapher.py to modify the names if you are using other setups. 
 
 Please still look inside the grapher.py and see how the naming works. For example, when I use p100_8workers_SSD, I would specify the setup that I'm using, which should also be corresponding to the experiments you ran. 
 
@@ -192,7 +215,15 @@ Now you have gathred the data needed.
 Copy the result above into time4(b).dat and run grapher_a.py to get the figure reproduced. (change b to a if you are running on SSD). 
 
 ## Figure 5
-With the experience from 3 and 4, you are now more familiar with the workflow. Similarly, you run ./figure5 and gather the result. Next, you go to the google sheet and look at how I categorized the models inside 5_Gus_version. After understanding that google sheet. You will get a result like this:
+With the experience from 3 and 4, you are now more familiar with the workflow. Similarly, you run 
+```
+./figure5
+``` 
+and gather the result by running:
+```
+python parser.py
+``` 
+You will see **4 models * 6 situations = 24 rows** of result. Next, you go to the google sheet and look at how I categorized the models inside 5_Gus_version. Paste everything into column C, D, E. After understanding that google sheet, and reorganize the (**# of images per second**) column, you will get a result like this:
 ```
 20.4343	20.4086	20.4354	11.8241
 40.3184	25.6369	32.0695	11.8219
@@ -207,10 +238,29 @@ for 4 different models:
 * mobilenet_v2	
 * resnet50
 
-Now you copy these result inside time5.dat in make_graph_fig5. Run the grapher, then you will get the figure of figure 5. 
+Now you copy these result inside time5.dat in make_graph_fig5. Run the grapher:
+```
+python grapher.py
+```
+then you will get the figure of figure 5. 
 
 ## Figure 6
-For figure 6, you will just get percentage as a result that looks like this:
+For figure 6
+Still, run:
+```
+./figure6.sh
+```
+Next:
+```
+cd outputsfig6/
+```
+Run the parser:
+```
+python parser.py
+```
+Go inside the parsed_output.txt, head to 6_Gus_version, paste the output in there and reorganize the data.
+
+You will get percentage as a result that looks like this:
 ```
 76.60
 33.69
@@ -222,7 +272,8 @@ Corresponding to 4 models:
 * resnet18
 * mobilenet_v2
 * resnet50
+
 Copy the result into the time6.dat and run the grapher.py. 
 
 # Conclusion
-Now you have gotten the figures you need and see how the GPU Emulator can be used to reproduce the figures without using a GPU. 
+Now you have gotten the figures you need and see how the GPU Emulator can be used to reproduce the figures without using a GPU. Thank you! 
