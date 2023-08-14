@@ -4,6 +4,13 @@ This repository includes the artifacts and instructions needed to reproduce the 
 
 I will also provide the python scripts needed to reproduce the graphs we have reproduced in paper [Analyzing and Mitigating Data Stalls in DNN Training](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://vldb.org/pvldb/vol14/p771-mohan.pdf). 
 
+First, let's clone the repository inside the directory that you want. 
+```
+cd the_directory_you_want_to_place_it
+git clone https://github.com/FarFlyField/OSRE_DELIVERABLE.git
+```
+Now you have the repository in your directory. Let me further explain things that you need to download to reproduce the figures. 
+
 The **GPU emulator** is embedded in the following softwares which include: 
 * **Datastall**: this is where you will run the experiments to get data. It includes: 
   * **Main application** code to train images
@@ -15,7 +22,7 @@ The **GPU emulator** is embedded in the following softwares which include:
 * **Vmtouch** that can show the result of memory usage. 
 
 Follow my instructions and let me layout the steps first: 
-1.  steps of installation on CPU, include cloning the needed repositories and set them up. 
+1.  steps of installation on CPU, include cloning the needed repositories and setting them up. 
 2.  navigate into the directory to run the exepriments. 
 3. learn how to use the scripts to reproduce the images. 
 
@@ -169,4 +176,8 @@ Note: this is NOT the original Imagenette dataset. I produced the dataset based 
 The steps above allows you to setup everything needed to run the experiments. Again, do not install any of the above inside this repository, install them at your local, or the outside directory of the current directory. 
 
 ## 2+3. Run Experiments in Datastall + Reproduce Figures. 
-Please head into **datastall** directory and checkout the README in there. I have decided that I will let you know how to run the experiments first. And as soon as you get the results, I will show you how to use those results as inputs to reproduce the figures. 
+Please head into **datastall** directory and checkout the README in there:
+```
+cd datastall
+``` 
+I will let you know how to run the experiments first. And as soon as you get the results of one figure, I will show you how to use those results as inputs to reproduce the figures. 
