@@ -26,6 +26,8 @@ sizes = [14,16,18,20,22,24]
 io = df['io'].tolist()
 cpu2gpu = df['cpu2gpu'].tolist()
 gpu = df['gpu'].tolist()
+
+# must be modified. 
 ideal = [158.846, 109.486, 10.627, 1.145, 0.421, 0.000]
 # create plot
 fig, ax1 = plt.subplots(1, 1)
